@@ -10,25 +10,28 @@ defineProps({
 <template>
   <div class="presentation">
     <h1 class="green">{{ msg }}</h1>
-    <h3>💻Développeur Full Stack</h3>
-    <h3>Spring Boot / Angular / Vue 3</h3>
-    <h3>📍Apside TOP</h3>
+    <h2>💻Développeur Full Stack</h2>
+    <h3>😇Spring Boot 🤩Angular 🥰Vue 3</h3>
   </div>
 </template>
 
 <style scoped>
 h1 {
   font-weight: 500;
-  font-size: 2.6rem;
-  top: -10px;
+  font-size: 2rem;
+}
+
+h2{
+  font-weight: 250;
+  font-size: 1.8rem;
 }
 
 h3 {
   font-size: 1.2rem;
+  font-weight: 350;
 }
 
-.presentation h1,
-.presentation h3 {
+h1,h2, h3 {
   text-align: center;
 }
 

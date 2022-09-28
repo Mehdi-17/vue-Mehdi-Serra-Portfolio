@@ -8,7 +8,7 @@ import ThePresentation from "./components/ThePresentation.vue";
     <img
       alt="Mehdi Serra Photo"
       class="presentationPhoto"
-      src="@/assets/mehdi.jpeg"
+      src="@/assets/mehdi-2.jpeg"
     />
 
     <div class="wrapper">
@@ -35,7 +35,7 @@ header {
 
 .presentationPhoto {
   display: block;
-  margin: 0 auto 2rem;
+  margin: 0 auto;
   height: auto;
   width: 100px;
   border-radius: 50%;
@@ -64,26 +64,31 @@ nav a {
   margin-top: 0.5rem;
 }
 
-nav a:first-of-type, a:nth-child(4) {
+nav a:first-of-type {
   border: 0;
 }
 
 @media (min-width: 1024px) {
   header {
     display: flex;
+    flex-direction: column;
     place-items: center;
+    padding-top: 5%;
+    width: 100%;
+
   }
 
   .presentationPhoto {
     margin: 0 2rem 0 0;
-    height: auto;
-    width: 255px;
+    height: 200px;
+    width: auto;
   }
 
   header .wrapper {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    place-items: center;
+    width: 100%;
   }
 
   nav {
