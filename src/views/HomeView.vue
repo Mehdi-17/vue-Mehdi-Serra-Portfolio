@@ -1,9 +1,9 @@
 <script setup>
+  const props = defineProps({text: String});
 </script>
 
 <template>
-  <div class="presText">
-    <p>Page de présentation de ma personne et mon parcours.</p>
+  <div class="presText" v-html="text">
   </div>
 </template>
 
@@ -15,7 +15,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    /*border: 1px solid yellow;*/
   }
 }  
 </style>

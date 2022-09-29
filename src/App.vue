@@ -4,7 +4,8 @@ import ThePresentation from "./components/ThePresentation.vue";
 </script>
 
 <template>
-  <header>
+  <div class="container">
+    <header>
     <img
       alt="Mehdi Serra Photo"
       class="presentationPhoto"
@@ -25,12 +26,24 @@ import ThePresentation from "./components/ThePresentation.vue";
   </header>
 
   <RouterView />
+  </div>
+  
 </template>
 
 <style scoped>
+.container {
+  position: relative;
+  top: -50px;
+}
+
 header {
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  width: 100%;
   line-height: 1.5;
   max-height: 100vh;
+  margin-bottom: 1.5rem;
 }
 
 .presentationPhoto {
@@ -39,6 +52,7 @@ header {
   height: auto;
   width: 100px;
   border-radius: 50%;
+  border: 4px solid hsla(160, 100%, 37%, 1);
 }
 
 nav {
@@ -61,7 +75,6 @@ nav a {
   display: inline-block;
   padding: 0 1.5rem;
   border-left: 1px solid var(--color-border);
-  margin-top: 0.5rem;
 }
 
 nav a:first-of-type {
@@ -69,17 +82,12 @@ nav a:first-of-type {
 }
 
 @media (min-width: 1024px) {
-  header {
-    display: flex;
-    flex-direction: column;
-    place-items: center;
-    padding-top: 5%;
-    width: 100%;
 
+  .container{
+    top: -100px;
   }
-
   .presentationPhoto {
-    margin: 0 2rem 0 0;
+    margin: 0 auto;
     height: 200px;
     width: auto;
   }
@@ -94,9 +102,6 @@ nav a:first-of-type {
   nav {
     text-align: center;
     font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
   }
 }
 </style>
