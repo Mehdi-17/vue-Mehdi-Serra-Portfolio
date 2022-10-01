@@ -4,7 +4,7 @@ import ThePresentation from "./components/ThePresentation.vue";
 </script>
 
 <template>
-  <div class="container">
+  <div class="appContainer">
     <header>
     <img
       alt="Mehdi Serra Photo"
@@ -31,7 +31,7 @@ import ThePresentation from "./components/ThePresentation.vue";
 </template>
 
 <style scoped>
-.container {
+.appContainer {
   position: relative;
   top: -50px;
 }
@@ -52,12 +52,12 @@ header {
   height: auto;
   width: 100px;
   border-radius: 50%;
-  border: 4px solid hsla(160, 100%, 37%, 1);
+  border: 4px solid var(--color-border-green);
 }
 
 nav {
   width: 100%;
-  font-size: 12px;
+  font-size: 1rem;
   text-align: center;
   margin-top: 2rem;
 }
@@ -83,7 +83,7 @@ nav a:first-of-type {
 
 @media (min-width: 1024px) {
 
-  .container{
+  .appContainer{
     top: -100px;
   }
   .presentationPhoto {
@@ -97,11 +97,6 @@ nav a:first-of-type {
     flex-direction: column;
     place-items: center;
     width: 100%;
-  }
-
-  nav {
-    text-align: center;
-    font-size: 1rem;
   }
 }
 </style>

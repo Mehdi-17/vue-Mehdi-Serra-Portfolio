@@ -8,13 +8,15 @@
 </template>
 
 <style scoped>
-
-@media (min-width: 1024px) {
-  .presText {
+.presText {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 0 2rem;
+    text-align: justify;
   }
+
+@media (min-width: 1024px) {
 }  
 </style>

@@ -1,7 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
-import SectionView from "../views/Section.vue";
-import getPresentationText from "../constants/constantsText";
+import ParcoursSectionView from "../views/ParcoursSection.vue";
+import getPresentationText from "../constants/constants";
+import { experiences } from "../constants/constants";
+import { formation } from "../constants/constants";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -15,25 +17,25 @@ const router = createRouter({
     {
       path: "/experience",
       name: "experience",
-      component: SectionView,
-      props : {title: "Expérience"},
+      component: ParcoursSectionView,
+      props : {title: "expériences", contents: experiences},
     },
     {
       path: "/formation",
       name: "formation",
-      component: SectionView,
-      props : {title: "Formation"},
+      component: ParcoursSectionView,
+      props : {title: "formation", contents: formation},
     },
     {
       path: "/projects",
       name: "projets",
-      component: SectionView,
+      component: ParcoursSectionView,
       props : {title: "Projets"},
     },
     {
       path: "/hobbies",
       name: "hobbies",
-      component: SectionView,
+      component: ParcoursSectionView,
       props : {title: "Hobbies"},
     },
   ],

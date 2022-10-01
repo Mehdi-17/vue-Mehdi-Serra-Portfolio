@@ -16,21 +16,6 @@ defineProps({
 </template>
 
 <style scoped>
-h1 {
-  font-weight: 500;
-  font-size: 2rem;
-}
-
-h2{
-  font-weight: 250;
-  font-size: 1.8rem;
-}
-
-h3 {
-  font-size: 1.2rem;
-  font-weight: 350;
-}
-
 h1,h2, h3 {
   text-align: center;
 }
