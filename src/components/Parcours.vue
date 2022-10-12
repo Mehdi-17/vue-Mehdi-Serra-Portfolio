@@ -1,24 +1,31 @@
 <script setup>
+import { ref } from 'vue';
+
 const props = defineProps({
   parcours: {
     required: true,
   },
 });
+
+const paddingSkillItem = ref('1rem')
 </script>
 
 <template>
   <div class="parcoursHeader">
     <div class="headerFirstInfo">
       <h2>{{ parcours.title }}</h2>
-      <p v-if="parcours.startDate">{{ parcours.startDate }} - {{ parcours.endDate }}</p>
+      <p v-if="parcours.startDate">
+        {{ parcours.startDate }} - {{ parcours.endDate }}
+      </p>
     </div>
     <h3>{{ parcours.company }}</h3>
   </div>
   <div class="parcoursContent">
     <div class="parcoursDescription" v-html="parcours.description"></div>
+    <div v-if="parcours.url"><a :href="parcours.url" target="_blank">Cliquez ici pour ouvrir dans GitHub</a></div>
     <div class="parcoursSkills" v-if="parcours.skills">
-      <p style="text-decoration: underline">Compétences :</p>
-      <p v-for="skill in parcours.skills" class="skill">{{ skill }}</p>
+      <p style="text-decoration: underline" :style="{paddingRight:paddingSkillItem}">Compétences :</p>
+      <p v-for="skill in parcours.skills" class="skill" :style="{paddingRight:paddingSkillItem}">{{ skill }}</p>
     </div>
   </div>
 </template>
@@ -45,7 +52,6 @@ const props = defineProps({
 }
 .parcoursSkills {
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
 }
 .skill {

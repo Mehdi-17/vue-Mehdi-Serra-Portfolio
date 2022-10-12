@@ -29,7 +29,7 @@ const router = createRouter({
       path: "/projects",
       name: "projets",
       component: ParcoursSectionView,
-      props : {title: "Projets", contents: null},
+      props : {title: "Projets", contents: []},
     },
     {
       path: "/hobbies",

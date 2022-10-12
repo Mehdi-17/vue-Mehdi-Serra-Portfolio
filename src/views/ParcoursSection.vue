@@ -1,7 +1,8 @@
 <script setup>
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import Parcours from "../components/Parcours.vue";
 import { GITHUB_REPOS_URL } from "../constants/constants";
+import { useFetch } from "../services/fetch";
 
 const props = defineProps({
   title: String,
@@ -10,24 +11,64 @@ const props = defineProps({
   },
 });
 
-const contentFromGitHubApi = ref(null);
-const errorApiResponse = ref(null);
+const responseApi = ref(null);
+const errorApi = ref(null);
 
-fetch(GITHUB_REPOS_URL)
-  .then((res) => res.json())
-  .then((json) => (contentFromGitHubApi.value = json))
-  .catch((err) => (errorApiResponse.value = err));
+useFetch(GITHUB_REPOS_URL).then((datas, error) => {
+  if (datas.message) {
+    responseApi.value = datas;
+    return;
+  }
+  if (error != null) {
+    errorApi = error.message;
+    return;
+  }
+
+  if (datas.length > 0) {
+    responseApi.value = [];
+    datas.sort((a, b) => a.id - b.id);
+    datas.forEach((data) => {
+      responseApi.value.push({
+        id: data.id,
+        title: data.name,
+        description: data.description,
+        skills: data.topics,
+        url: data.html_url,
+      });
+    });
+  }
+});
 </script>
 
 <template>
   <div class="sectionContainer">
-    <div v-if="errorApiResponse !== null && contents === null">
+    <div
+      v-if="
+        (errorApi || (responseApi && responseApi.message)) &&
+        contents.length === 0
+      "
+    >
       Un problème a été rencontré lors de l'appel à l'API GitHub :
-      {{ errorApiResponse.message }}
+      {{ errorApi ? errorApi.message : responseApi.message }}
     </div>
-    <div v-else-if="contentFromGitHubApi === null && contents === null">Chargement...</div>
-    <div v-if="contents !== null || contentFromGitHubApi !== null">
+
+    <div
+      v-else-if="
+        contents.length === 0 && (!responseApi || responseApi.length === 0)
+      "
+    >
+      Chargement...
+    </div>
+
+    <div v-if="contents.length > 0">
       <div class="section" v-for="content in contents">
+        <Parcours :parcours="content" />
+      </div>
+    </div>
+    <div
+      v-else-if="contents.length === 0 && responseApi && responseApi.length > 0"
+    >
+      <div class="section" v-for="content in responseApi" :key="responseApi.id">
         <Parcours :parcours="content" />
       </div>
     </div>

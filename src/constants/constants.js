@@ -4,6 +4,8 @@ export default function getPresentationText() {
     <p>En parallèle de mon travail à plein temps, je me forme sur <span class="green">Vue 3</span> (qui m'a servi à faire ce site), tout en continuant à perfectionner mes compétences sur <span class="green">Spring Boot</span>.</p>`;
 }
 
+export const GITHUB_REPOS_URL = "https://api.github.com/users/Mehdi-17/repos";
+
 export const experiences = [
   {
     title: "Développeur Java - Angular",
@@ -83,5 +85,3 @@ export const projets = [
       "<p>Obtention du diplôme avant réorientation dans le développement.</p>",
   },
 ];
-
-export const GITHUB_REPOS_URL = "https://api.github.com/users/Mehdi-17/repos";
