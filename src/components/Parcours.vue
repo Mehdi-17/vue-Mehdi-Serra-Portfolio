@@ -10,7 +10,7 @@ const props = defineProps({
   <div class="parcoursHeader">
     <div class="headerFirstInfo">
       <h2>{{ parcours.title }}</h2>
-      <p>{{ parcours.startDate }} - {{ parcours.endDate }}</p>
+      <p v-if="parcours.startDate">{{ parcours.startDate }} - {{ parcours.endDate }}</p>
     </div>
     <h3>{{ parcours.company }}</h3>
   </div>

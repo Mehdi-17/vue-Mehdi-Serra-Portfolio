@@ -2,8 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import ParcoursSectionView from "../views/ParcoursSection.vue";
 import getPresentationText from "../constants/constants";
-import { experiences } from "../constants/constants";
-import { formation } from "../constants/constants";
+import { experiences, formation, projets } from "../constants/constants";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -30,7 +29,7 @@ const router = createRouter({
       path: "/projects",
       name: "projets",
       component: ParcoursSectionView,
-      props : {title: "Projets"},
+      props : {title: "Projets", contents: null},
     },
     {
       path: "/hobbies",

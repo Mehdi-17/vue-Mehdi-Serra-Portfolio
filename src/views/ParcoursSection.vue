@@ -1,5 +1,7 @@
 <script setup>
+import { ref } from "vue";
 import Parcours from "../components/Parcours.vue";
+import { GITHUB_REPOS_URL } from "../constants/constants";
 
 const props = defineProps({
   title: String,
@@ -7,12 +9,27 @@ const props = defineProps({
     type: Array,
   },
 });
+
+const contentFromGitHubApi = ref(null);
+const errorApiResponse = ref(null);
+
+fetch(GITHUB_REPOS_URL)
+  .then((res) => res.json())
+  .then((json) => (contentFromGitHubApi.value = json))
+  .catch((err) => (errorApiResponse.value = err));
 </script>
 
 <template>
   <div class="sectionContainer">
-    <div class="section" v-for="content in contents">
-      <Parcours :parcours="content" />
+    <div v-if="errorApiResponse !== null && contents === null">
+      Un problème a été rencontré lors de l'appel à l'API GitHub :
+      {{ errorApiResponse.message }}
+    </div>
+    <div v-else-if="contentFromGitHubApi === null && contents === null">Chargement...</div>
+    <div v-if="contents !== null || contentFromGitHubApi !== null">
+      <div class="section" v-for="content in contents">
+        <Parcours :parcours="content" />
+      </div>
     </div>
   </div>
 </template>

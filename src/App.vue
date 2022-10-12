@@ -1,33 +1,35 @@
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
 import ThePresentation from "./components/ThePresentation.vue";
+
+//todo use axios to call github api
+//voir dans "à regarder plus tard" du compte mehdi.serra57
 </script>
 
 <template>
   <div class="appContainer">
     <header>
-    <img
-      alt="Mehdi Serra Photo"
-      class="presentationPhoto"
-      src="@/assets/mehdi-2.jpeg"
-    />
+      <img
+        alt="Mehdi Serra Photo"
+        class="presentationPhoto"
+        src="@/assets/mehdi-2.jpeg"
+      />
 
-    <div class="wrapper">
-      <ThePresentation msg="Mehdi Serra" />
+      <div class="wrapper">
+        <ThePresentation msg="Mehdi Serra" />
 
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/experience">Expérience</RouterLink>
-        <RouterLink to="/formation">Formation</RouterLink>
-        <RouterLink to="/projects">Projets</RouterLink>
-        <RouterLink to="/hobbies">Centres d'intérêts</RouterLink>
-      </nav>
-    </div>
-  </header>
+        <nav>
+          <RouterLink to="/">Home</RouterLink>
+          <RouterLink to="/experience">Expérience</RouterLink>
+          <RouterLink to="/formation">Formation</RouterLink>
+          <RouterLink to="/projects">Projets</RouterLink>
+          <RouterLink to="/hobbies">Centres d'intérêts</RouterLink>
+        </nav>
+      </div>
+    </header>
 
-  <RouterView />
+    <RouterView />
   </div>
-  
 </template>
 
 <style scoped>
@@ -82,8 +84,7 @@ nav a:first-of-type {
 }
 
 @media (min-width: 1024px) {
-
-  .appContainer{
+  .appContainer {
     top: -100px;
   }
   .presentationPhoto {
