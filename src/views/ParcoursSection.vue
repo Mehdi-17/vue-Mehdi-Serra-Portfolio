@@ -1,13 +1,18 @@
 <script setup>
-import { onMounted, ref } from "vue";
+import { ref } from "vue";
 import Parcours from "../components/Parcours.vue";
 import { GITHUB_REPOS_URL } from "../constants/constants";
 import { useFetch } from "../services/fetch";
+import SelectComponent from "../components/SelectComponent.vue";
 
 const props = defineProps({
   title: String,
   contents: {
     type: Array,
+  },
+  isSelectedDisplayed: {
+    type: Boolean,
+    default: false,
   },
 });
 
@@ -26,7 +31,7 @@ useFetch(GITHUB_REPOS_URL).then((datas, error) => {
 
   if (datas.length > 0) {
     responseApi.value = [];
-    datas.sort((a, b) => a.id - b.id);
+    datas.sort((a, b) => b.id - a.id);
     datas.forEach((data) => {
       responseApi.value.push({
         id: data.id,
@@ -36,6 +41,8 @@ useFetch(GITHUB_REPOS_URL).then((datas, error) => {
         url: data.html_url,
       });
     });
+
+    return responseApi.value;
   }
 });
 </script>
@@ -45,6 +52,7 @@ useFetch(GITHUB_REPOS_URL).then((datas, error) => {
     <div
       v-if="
         (errorApi || (responseApi && responseApi.message)) &&
+        contents &&
         contents.length === 0
       "
     >
@@ -54,19 +62,33 @@ useFetch(GITHUB_REPOS_URL).then((datas, error) => {
 
     <div
       v-else-if="
-        contents.length === 0 && (!responseApi || responseApi.length === 0)
+        contents &&
+        contents.length === 0 &&
+        (!responseApi || responseApi.length === 0)
       "
     >
       Chargement...
     </div>
 
-    <div v-if="contents.length > 0">
+    <div
+      v-if="isSelectedDisplayed && responseApi && responseApi.length > 0"
+      style="display: flex; justify-content: center; margin:0.8rem 0 ;"
+    >
+      <SelectComponent />
+    </div>
+
+    <div v-if="contents && contents.length > 0">
       <div class="section" v-for="content in contents">
         <Parcours :parcours="content" />
       </div>
     </div>
     <div
-      v-else-if="contents.length === 0 && responseApi && responseApi.length > 0"
+      v-else-if="
+        contents &&
+        contents.length === 0 &&
+        responseApi &&
+        responseApi.length > 0
+      "
     >
       <div class="section" v-for="content in responseApi" :key="responseApi.id">
         <Parcours :parcours="content" />
