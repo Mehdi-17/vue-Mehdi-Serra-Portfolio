@@ -11,7 +11,7 @@ defineProps({
   <div class="presentation">
     <h1 class="green">{{ msg }}</h1>
     <h2>💻Développeur Full Stack</h2>
-    <h3>🚀Spring Boot 🪐Angular ☄️Vue 3</h3>
+    <h3>☄️Java 🚀Spring Boot 🪐Angular</h3>
   </div>
 </template>
 

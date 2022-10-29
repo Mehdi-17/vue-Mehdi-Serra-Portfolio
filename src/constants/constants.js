@@ -68,20 +68,10 @@ export const formation = [
   },
 ];
 
-export const projets = [
+export const hobbies = [
   {
-    title: "Concepteur Développeur d'Application",
-    description:
-      "<p>Concepteur Développeur d'Applications - Titre professionnel - Ministère de l'Emploi et de la Formation - <span class='green'>RNCP Niveau II (Bac+3/4)</span>.</p>",
-  },
-  {
-    title: "Développeur Web Logiciel",
-    description:
-      "<p>Formation au titre professionnel Developpeur web - Ministère de l'Emploi et de la Formation / <span class='green'>RNCP - Niveau III (Bac+2)</span> - 700h en formation et 350h en entreprise.</p>",
-  },
-  {
-    title: "DUT Techniques de Commercialisation",
-    description:
-      "<p>Obtention du diplôme avant réorientation dans le développement.</p>",
+    title: "Football Américain",
+    description: `<p>En dehors du développement et des nouvelles technologies, j'aime beaucoup faire du sport. Comme dans tout ce que je fais, j'y suis très investi. <br/>
+      Durant mon enfance et mon adolescence, j'ai fait 13 ans de <span class="green">Football</span> en club. Aujourd'hui, et depuis 2015 je pratique le <span class="green">Football Américain</span> aux <span class="green">Pionniers de Touraine</span>. Nous avons d'ailleurs été <span class="green">Champions de France</span> de Division 2 et évoluons actuellement en Division 1.</p>`,
   },
 ];

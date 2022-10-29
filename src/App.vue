@@ -2,8 +2,6 @@
 import { RouterLink, RouterView } from "vue-router";
 import ThePresentation from "./components/ThePresentation.vue";
 
-//todo use axios to call github api
-//voir dans "à regarder plus tard" du compte mehdi.serra57
 </script>
 
 <template>
