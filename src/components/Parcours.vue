@@ -41,6 +41,10 @@ const paddingSkillItem = ref('1rem')
   display: flex;
   flex-direction: column;
 }
+
+h2{
+  overflow-wrap: break-word;
+}
 .dateSection {
   display: flex;
   align-items: center;
